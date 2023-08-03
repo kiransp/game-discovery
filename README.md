@@ -1,4 +1,5 @@
-#About the project
+# About the project
+
 Here I tried to implement the replica of the site https://rawg.io/
 
 # React + TypeScript + Vite
