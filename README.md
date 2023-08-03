@@ -1,3 +1,6 @@
+#About the project
+Here I tried to implement the replica of the site https://rawg.io/
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
