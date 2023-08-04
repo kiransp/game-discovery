@@ -21,7 +21,7 @@ function App() {
         </Show>
         <GridItem
           area={"main"}
-          bg={"silver"}
+          bg={"#151515"}
           color={"#FFF"}
           mt={3}
           ml={3}
