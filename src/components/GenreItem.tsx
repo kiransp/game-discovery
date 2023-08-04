@@ -1,4 +1,4 @@
-import { HStack, Image, Text } from "@chakra-ui/react";
+import { Button, HStack, Image } from "@chakra-ui/react";
 import { Genre } from "../hooks/useGenres";
 
 interface Props {
@@ -9,7 +9,7 @@ const GenreItem = ({ genre }: Props) => {
   return (
     <HStack padding={2}>
       <Image src={genre.image_background} boxSize="40px" borderRadius={10} />
-      <Text fontSize="large">{genre.name}</Text>
+      <Button variant="link">{genre.name}</Button>
     </HStack>
   );
 };
