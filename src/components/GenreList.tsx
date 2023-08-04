@@ -4,9 +4,10 @@ import GenreItem from "./GenreItem";
 
 interface Props {
   setGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-function GenreList({ setGenre }: Props) {
+function GenreList({ setGenre, selectedGenre }: Props) {
   const { data: genres, error, isLoading } = useGenres();
   // const [selectedGenre, setGenre] = useState("");
   if (isLoading) return <Spinner />;
@@ -21,7 +22,7 @@ function GenreList({ setGenre }: Props) {
               setGenre(genre);
             }}
           >
-            <GenreItem genre={genre} />
+            <GenreItem genre={genre} selectedGenre={selectedGenre} />
           </ListItem>
         ))}
       </List>
