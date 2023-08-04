@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { CanceledError } from "axios";
 import ApiClient from "../services/api-clinet";
 
 interface Games {
@@ -16,13 +17,19 @@ function useGames() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    const controller = new AbortController();
     ApiClient()
-      .get<FetchGamesResponse>("/games")
+      .get<FetchGamesResponse>("/games", { signal: controller.signal })
       .then((res) => {
         setGames(res.data.results);
         setError("");
       })
-      .catch((err) => setError(err.message));
+      .catch((err) => {
+        if (err instanceof CanceledError) return;
+        setError(err.message);
+      });
+
+    return () => controller.abort();
   }, []);
 
   return { games, error };
