@@ -4,8 +4,12 @@ import GameCard from "./GameCard";
 import CardSkeleton from "./CardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 
-function GameGrid() {
-  const { data: games, error, isLoading } = useGames();
+interface Props {
+  selectedGenre: string;
+}
+
+function GameGrid({ selectedGenre }: Props) {
+  const { data: games, error, isLoading } = useGames(selectedGenre);
   const skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <>

@@ -7,30 +7,36 @@ interface FetchResponse<T> {
   results: T[];
 }
 
-function useData<T>(endpoint: string) {
-  console.log("TTTT ", endpoint);
+function useData<T>(endpoint: string, deps?: string[]) {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const controller = new AbortController();
-    setLoading(true);
-    ApiClient()
-      .get<FetchResponse<T>>(endpoint, { signal: controller.signal })
-      .then((res) => {
-        setData(res.data.results);
-        setLoading(false);
-        setError("");
-      })
-      .catch((err) => {
-        setLoading(false);
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-      });
+  useEffect(
+    () => {
+      const controller = new AbortController();
+      setLoading(true);
+      ApiClient()
+        .get<FetchResponse<T>>(endpoint, {
+          signal: controller.signal,
+          // ...reqConfig,
+        })
+        .then((res) => {
+          setData(res.data.results);
+          setLoading(false);
+          setError("");
+        })
+        .catch((err) => {
+          setLoading(false);
+          if (err instanceof CanceledError) return;
+          setError(err.message);
+        });
 
-    return () => controller.abort();
-  }, []);
+      return () => controller.abort();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    deps ? [...deps] : []
+  );
 
   return { data, error, isLoading };
 }

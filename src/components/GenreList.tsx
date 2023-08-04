@@ -1,9 +1,14 @@
-import { List, Spinner, Text } from "@chakra-ui/react";
+import { List, ListItem, Spinner, Text } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import GenreItem from "./GenreItem";
 
-function GenreList() {
+interface Props {
+  setGenre: (genre: string) => void;
+}
+
+function GenreList({ setGenre }: Props) {
   const { data: genres, error, isLoading } = useGenres();
+  // const [selectedGenre, setGenre] = useState("");
   if (isLoading) return <Spinner />;
   return (
     <>
@@ -11,7 +16,14 @@ function GenreList() {
 
       <List>
         {genres?.map((genre) => (
-          <GenreItem genre={genre} />
+          <ListItem
+            onClick={() => {
+              console.log("selected : ", genre.slug);
+              setGenre(genre.slug);
+            }}
+          >
+            <GenreItem genre={genre} />
+          </ListItem>
         ))}
       </List>
     </>
