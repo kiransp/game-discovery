@@ -16,7 +16,7 @@ function App() {
           <NavBar />
         </GridItem>
         <Show above={"lg"}>
-          <GridItem area={"sideNav"} bg="gold">
+          <GridItem area={"sideNav"}>
             <GenreList />
           </GridItem>
         </Show>
