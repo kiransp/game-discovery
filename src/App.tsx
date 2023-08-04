@@ -19,7 +19,14 @@ function App() {
             Side nav
           </GridItem>
         </Show>
-        <GridItem area={"main"} bg={"silver"} color={"#FFF"}>
+        <GridItem
+          area={"main"}
+          bg={"silver"}
+          color={"#FFF"}
+          mt={3}
+          ml={3}
+          mr={3}
+        >
           <GameGrid />
         </GridItem>
         <GridItem area={"footer"} bg="red.400">

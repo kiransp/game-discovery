@@ -2,18 +2,19 @@ import { useEffect, useState } from "react";
 import { CanceledError } from "axios";
 import ApiClient from "../services/api-clinet";
 
-interface Games {
+export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 
 interface FetchGamesResponse {
   count: number;
-  results: Games[];
+  results: Game[];
 }
 
 function useGames() {
-  const [games, setGames] = useState<Games[]>([]);
+  const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
