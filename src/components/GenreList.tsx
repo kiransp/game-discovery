@@ -1,9 +1,9 @@
 import { List, ListItem, Spinner, Text } from "@chakra-ui/react";
-import useGenres from "../hooks/useGenres";
+import useGenres, { Genre } from "../hooks/useGenres";
 import GenreItem from "./GenreItem";
 
 interface Props {
-  setGenre: (genre: string) => void;
+  setGenre: (genre: Genre) => void;
 }
 
 function GenreList({ setGenre }: Props) {
@@ -18,8 +18,7 @@ function GenreList({ setGenre }: Props) {
         {genres?.map((genre) => (
           <ListItem
             onClick={() => {
-              console.log("selected : ", genre.slug);
-              setGenre(genre.slug);
+              setGenre(genre);
             }}
           >
             <GenreItem genre={genre} />

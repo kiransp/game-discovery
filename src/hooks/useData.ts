@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CanceledError } from "axios";
+import { AxiosRequestConfig, CanceledError } from "axios";
 import ApiClient from "../services/api-clinet";
 
 interface FetchResponse<T> {
@@ -7,7 +7,11 @@ interface FetchResponse<T> {
   results: T[];
 }
 
-function useData<T>(endpoint: string, deps?: string[]) {
+function useData<T>(
+  endpoint: string,
+  reqConfig?: AxiosRequestConfig,
+  deps?: unknown[]
+) {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -19,7 +23,7 @@ function useData<T>(endpoint: string, deps?: string[]) {
       ApiClient()
         .get<FetchResponse<T>>(endpoint, {
           signal: controller.signal,
-          // ...reqConfig,
+          ...reqConfig,
         })
         .then((res) => {
           setData(res.data.results);
