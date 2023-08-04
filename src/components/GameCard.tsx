@@ -11,13 +11,13 @@ interface Props {
 function GameCard({ game }: Props) {
   return (
     <>
-      <Card borderRadius={10} overflow={"hidden"} bg="#202020">
+      <Card>
         <Image
           src={cropImageUrl(game.background_image)}
           objectFit="cover"
           alt={game.name}
         />
-        <CardBody>
+        <CardBody bg={"#202020"}>
           <Heading fontSize={"2xl"} color="#FFF">
             {game.name}
           </Heading>
