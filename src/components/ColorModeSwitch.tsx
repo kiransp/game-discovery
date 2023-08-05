@@ -9,7 +9,9 @@ function ColorModeSwitch() {
         onChange={toggleColorMode}
         colorScheme="red"
       />
-      <Text color="#FFF">Dark Mode</Text>
+      <Text color="#FFF" whiteSpace="nowrap">
+        Dark Mode
+      </Text>
     </HStack>
   );
 }
