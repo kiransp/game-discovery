@@ -1,16 +1,23 @@
-import { Select } from "@chakra-ui/react";
+import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { AiFillCaretDown } from "react-icons/ai";
 import usePlatforms from "../hooks/usePlatforms";
 
 const PlatformFilter = () => {
-  const { data: platforms } = usePlatforms();
+  const { data: platforms, error } = usePlatforms();
+  if (error) return;
   return (
-    <Select placeholder="Select option">
-      {platforms.map((platform) => (
-        <option key={platform.id} value={platform.slug}>
-          {platform.name}
-        </option>
-      ))}
-    </Select>
+    <Menu>
+      <MenuButton as={Button} rightIcon={<AiFillCaretDown />}>
+        Platforms
+      </MenuButton>
+      <MenuList>
+        {platforms.map((platform) => (
+          <MenuItem key={platform.id} value={platform.slug}>
+            {platform.name}
+          </MenuItem>
+        ))}
+      </MenuList>
+    </Menu>
   );
 };
 
