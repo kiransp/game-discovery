@@ -8,15 +8,24 @@ interface Props {
 
 const GenreItem = ({ genre, selectedGenre }: Props) => {
   return (
-    <HStack padding={2}>
-      <Image src={genre.image_background} boxSize="40px" borderRadius={10} />
-      <Button
-        variant="link"
-        fontSize={genre.slug === selectedGenre?.slug ? "20px" : "15px"}
-      >
-        {genre.name}
-      </Button>
-    </HStack>
+    <>
+      <HStack padding={2}>
+        <Image
+          src={genre.image_background}
+          boxSize="40px"
+          objectFit="cover"
+          borderRadius={10}
+        />
+        <Button
+          variant="link"
+          whiteSpace="normal"
+          textAlign="left"
+          fontSize={genre.slug === selectedGenre?.slug ? "20px" : "15px"}
+        >
+          {genre.name}
+        </Button>
+      </HStack>
+    </>
   );
 };
 

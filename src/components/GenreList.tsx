@@ -1,4 +1,4 @@
-import { List, ListItem, Spinner, Text } from "@chakra-ui/react";
+import { Heading, List, ListItem, Spinner, Text } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import GenreItem from "./GenreItem";
 
@@ -14,7 +14,9 @@ function GenreList({ setGenre, selectedGenre }: Props) {
   return (
     <>
       {error && <Text>{error}</Text>}
-
+      <Heading fontSize="2xl" mt={4} mb={4}>
+        Genres
+      </Heading>
       <List>
         {genres?.map((genre) => (
           <ListItem
