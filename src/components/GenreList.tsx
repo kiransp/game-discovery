@@ -18,6 +18,7 @@ function GenreList({ setGenre, selectedGenre }: Props) {
       <List>
         {genres?.map((genre) => (
           <ListItem
+            key={genre.id}
             onClick={() => {
               setGenre(genre);
             }}
