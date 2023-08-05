@@ -18,15 +18,15 @@ function GameCard({ game }: Props) {
           alt={game.name}
         />
         <CardBody bg={"#202020"}>
-          <Heading fontSize={"2xl"} color="#FFF">
-            {game.name}
-          </Heading>
-          <HStack justifyContent={"space-between"}>
+          <HStack justifyContent={"space-between"} mb={3}>
             <PlatformIconsList
               platforms={game.parent_platforms.map(({ platform }) => platform)}
             />
             <GameScore score={game.metacritic} />
           </HStack>
+          <Heading fontSize={"2xl"} color="#FFF">
+            {game.name}
+          </Heading>
         </CardBody>
       </Card>
     </>
