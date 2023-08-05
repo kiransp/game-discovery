@@ -35,7 +35,7 @@ function App() {
           lg: "200px 1fr", // in lg, first column: nav will be 200px and second column: main will take the rest
         }}
       >
-        <GridItem area={"nav"} bg="#151515">
+        <GridItem area={"nav"}>
           <NavBar
             onSearchInput={(searchString) =>
               setGameQuery({ ...gameQuery, searchString: searchString })
@@ -50,14 +50,7 @@ function App() {
             />
           </GridItem>
         </Show>
-        <GridItem
-          area={"main"}
-          bg={"#15151599"}
-          color={"#FFF"}
-          mt={3}
-          ml={3}
-          mr={3}
-        >
+        <GridItem area={"main"} color={"#FFF"} mt={3} ml={3} mr={3}>
           <Box pl={3}>
             <GameHeading gameQueries={gameQuery} />
             <HStack mb={5} spacing={5}>
@@ -77,9 +70,9 @@ function App() {
           </Box>
           <GameGrid gameQuery={gameQuery} />
         </GridItem>
-        <GridItem area={"footer"} bg="red.400">
+        {/* <GridItem area={"footer"} bg="red.400">
           Footer
-        </GridItem>
+        </GridItem> */}
       </Grid>
     </>
   );
