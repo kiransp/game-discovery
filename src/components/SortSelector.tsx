@@ -1,4 +1,11 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import {
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  useColorMode,
+} from "@chakra-ui/react";
 import { AiFillCaretDown } from "react-icons/ai";
 
 interface Props {
@@ -7,6 +14,7 @@ interface Props {
 }
 
 const SortSelector = ({ onSortSelection, selectedSort }: Props) => {
+  const { colorMode } = useColorMode();
   const sortingFields = [
     {
       value: "",
@@ -49,6 +57,7 @@ const SortSelector = ({ onSortSelection, selectedSort }: Props) => {
       <MenuList>
         {sortingFields.map(({ name, value }) => (
           <MenuItem
+            color={colorMode === "dark" ? "#FFF" : "#000"}
             key={name}
             value={value}
             onClick={() => onSortSelection(name)}
