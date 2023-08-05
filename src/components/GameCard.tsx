@@ -3,6 +3,7 @@ import { Game } from "../hooks/useGames";
 import PlatformIconsList from "./PlatformIconsList";
 import GameScore from "./GameScore";
 import cropImageUrl from "../services/image-url";
+import Emojis from "./Emojis";
 
 interface Props {
   game: Game;
@@ -27,6 +28,7 @@ function GameCard({ game }: Props) {
           <Heading fontSize={"2xl"} color="#FFF">
             {game.name}
           </Heading>
+          <Emojis rating={game.rating_top} />
         </CardBody>
       </Card>
     </>
