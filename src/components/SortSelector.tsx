@@ -1,29 +1,59 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { AiFillCaretDown } from "react-icons/ai";
 
-const SortSelector = () => {
+interface Props {
+  onSortSelection: (sortBy: string) => void;
+  selectedSort: string;
+}
+
+const SortSelector = ({ onSortSelection, selectedSort }: Props) => {
   const sortingFields = [
-    "name",
-    "released",
-    "added",
-    "created",
-    "updated",
-    "rating",
-    "metacritic",
+    {
+      value: "",
+      name: "Relevance",
+    },
+    {
+      value: "name",
+      name: "Name",
+    },
+    {
+      value: "released",
+      name: "Released",
+    },
+    {
+      value: "added",
+      name: "Added",
+    },
+    {
+      value: "created",
+      name: "Created",
+    },
+    {
+      value: "updated",
+      name: "Updated",
+    },
+    {
+      value: "rating",
+      name: "Rating",
+    },
+    {
+      value: "metacritic",
+      name: "Metacritic",
+    },
   ];
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<AiFillCaretDown />}>
-        Orber by
+        {selectedSort ? "Order by: " + selectedSort : "Order by: Relevance"}
       </MenuButton>
       <MenuList>
-        {sortingFields.map((field) => (
+        {sortingFields.map(({ name, value }) => (
           <MenuItem
-            key={field}
-            value={field}
-            onClick={() => console.log("field : ", field)}
+            key={name}
+            value={value}
+            onClick={() => onSortSelection(name)}
           >
-            {field}
+            {name}
           </MenuItem>
         ))}
       </MenuList>
